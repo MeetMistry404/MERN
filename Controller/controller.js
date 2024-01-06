@@ -69,7 +69,7 @@ const signIn = async (req, res) => {
       res.status(200).json({
         msg: "login successful",
         token: await userExist.generateToken(),
-        userId: res._id.toString(),
+        userId: userExist._id.toString(),
       });
     }
   } catch (error) {
