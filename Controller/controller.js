@@ -21,7 +21,11 @@ const create = async (req, res) => {
 
     const newUser = await User.create({ email, password, username, phone });
 
-    res.status(200).json({ msg: newUser });
+    res.status(200).json({
+      msg: "registation successful",
+      token: await newUser.generateToken(),
+      userId: newUser._id.toString(),
+    });
   } catch (error) {
     res.status(500).json({ msg: "internal server error" });
   }
